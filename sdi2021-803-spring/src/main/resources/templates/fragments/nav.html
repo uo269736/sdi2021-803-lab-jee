@@ -13,21 +13,21 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
 				<li id="marks-menu" class="dropdown">
-					<a class="dropdown-toogle" data-toggle="dropdown" href="#">
+					<a class="dropdown-toogle" data-toggle="dropdown" href="#" th:text="#{gestion.notas}">
 						Gestión de notas <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="/mark/add">Agregar Nota</a></li>
-						<li><a href="/mark/list">Ver Notas</a></li>
+						<li><a href="/mark/add" th:text="#{gestion.notas.agregar}">Agregar Nota</a></li>
+						<li><a href="/mark/list" th:text="#{gestion.notas.ver}">Ver Notas</a></li>
 					</ul>
 				</li>
 				<li id="users-menu" class="dropdown">
-					<a class="dropdown-toogle" data-toggle="dropdown" href="#">
+					<a class="dropdown-toogle" data-toggle="dropdown" href="#" th:text="#{gestion.usuario}">
 						Gestión de Usuarios <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="/user/add">Agregar Usuario</a></li>
-						<li><a href="/user/list">Ver Usuarios</a></li>
+						<li><a href="/user/add" th:text="#{gestion.usuario.agregar}">Agregar Usuario</a></li>
+						<li><a href="/user/list" th:text="#{gestion.usuario.ver}">Ver Usuarios</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -48,11 +48,16 @@
 								style="border: 0; float: left; margin-right: 15px" /> <span
 								th:text="#{language.es}">Español</span>
 						</a></li>
+						<li><a id="btnItalian" value="IT"> <img
+								th:src="@{/img/if_it_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.it}">Italiano</span>
+						</a></li>
 					</ul></li>
-				<li><a href="/signup" th:text="#{signup.message}">> <span
+				<li><a href="/signup" th:text="#{signup.message}"> <span
 						class="glyphicon glyphicon-user"></span> Registrate
 				</a></li>
-				<li><a href="/login" th:text="#{login.message}">> <span
+				<li><a href="/login" th:text="#{login.message}"> <span
 						class="glyphicon glyphicon-log-in"></span> Identifícate
 				</a></li>
 			</ul>
