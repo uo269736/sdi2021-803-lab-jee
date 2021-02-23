@@ -10,35 +10,42 @@
 			<img src="/img/student-48.png" alt="logo" />
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav">
+			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
+				>
 				<li><a href="/">Home</a></li>
-				<li id="marks-menu" class="dropdown">
-					<a class="dropdown-toogle" data-toggle="dropdown" href="#" th:text="#{gestion.notas}">
+				<li id="marks-menu" class="dropdown"><a class="dropdown-toogle"
+					data-toggle="dropdown" href="#" th:text="#{gestion.notas}">
 						Gestión de notas <span class="caret"></span>
-					</a>
+				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/mark/add" th:text="#{gestion.notas.agregar}">Agregar Nota</a></li>
-						<li><a href="/mark/list" th:text="#{gestion.notas.ver}">Ver Notas</a></li>
-					</ul>
-				</li>
-				<li id="users-menu" class="dropdown">
-					<a class="dropdown-toogle" data-toggle="dropdown" href="#" th:text="#{gestion.usuario}">
-						Gestión de Usuarios <span class="caret"></span>
-					</a>
+						<li sec:authorize="hasRole('ROLE_PROFESSOR')"><a
+							href="/mark/add" th:text="#{gestion.notas.agregar}">Agregar
+								Nota</a></li>
+						<li><a href="/mark/list" th:text="#{gestion.notas.ver}">Ver
+								Notas</a></li>
+					</ul></li>
+				<li id="users-menu" class="dropdown"
+					sec:authorize="hasRole('ROLE_ADMIN')"><a
+					class="dropdown-toogle" data-toggle="dropdown" href="#"
+					th:text="#{gestion.usuario}"> Gestión de Usuarios <span
+						class="caret"></span>
+				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/user/add" th:text="#{gestion.usuario.agregar}">Agregar Usuario</a></li>
-						<li><a href="/user/list" th:text="#{gestion.usuario.ver}">Ver Usuarios</a></li>
-					</ul>
-				</li>
-				<li id="users-menu" class="dropdown">
-					<a class="dropdown-toogle" data-toggle="dropdown" href="#" th:text="#{gestion.profesor}">
+						<li><a href="/user/add" th:text="#{gestion.usuario.agregar}">Agregar
+								Usuario</a></li>
+						<li><a href="/user/list" th:text="#{gestion.usuario.ver}">Ver
+								Usuarios</a></li>
+					</ul></li>
+				<li id="users-menu" class="dropdown"><a class="dropdown-toogle"
+					data-toggle="dropdown" href="#" th:text="#{gestion.profesor}">
 						Gestión de Profesores <span class="caret"></span>
-					</a>
+				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/professor/add" th:text="#{gestion.profesor.agregar}">Agregar Profesor</a></li>
-						<li><a href="/professor/list" th:text="#{gestion.profesor.ver}">Ver Profesores</a></li>
-					</ul>
-				</li>
+						<li><a href="/professor/add"
+							th:text="#{gestion.profesor.agregar}">Agregar Profesor</a></li>
+						<li><a href="/professor/list"
+							th:text="#{gestion.profesor.ver}">Ver Profesores</a></li>
+					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="#"
@@ -63,11 +70,16 @@
 								th:text="#{language.it}">Italiano</span>
 						</a></li>
 					</ul></li>
-				<li><a href="/signup" th:text="#{signup.message}"> <span
+				<li sec:authorize="!isAuthenticated()"><a href="/signup"
+					th:text="#{signup.message}"> <span
 						class="glyphicon glyphicon-user"></span> Registrate
 				</a></li>
-				<li><a href="/login" th:text="#{login.message}"> <span
+				<li sec:authorize="!isAuthenticated()"><a href="/login"
+					th:text="#{login.message}"> <span
 						class="glyphicon glyphicon-log-in"></span> Identifícate
+				</a></li>
+				<li sec:authorize="isAuthenticated()"><a href="/logout"> <span
+						class="glyphicon glyphicon-log-out"></span> Desconectar
 				</a></li>
 			</ul>
 		</div>
