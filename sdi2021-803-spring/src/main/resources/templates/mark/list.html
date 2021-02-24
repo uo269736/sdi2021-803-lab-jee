@@ -22,10 +22,17 @@
 		<p>Las notas que actualmente figuran en el sistema son las
 			siguientes:</p>
 		<button type="button" id="updateButton" class="btn btn-default">Actualizar</button>
-		<script>
-			$("#updateButton").click(function() {
-				$("#tableMarks").load('/mark/list/update');
-			});
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+				$("#updateButton").click(function() {
+					 var numberPage = [[${param.page}]];
+					 var urlUpdate = '/mark/list/update';
+					 if (numberPage != null ){
+					 	urlUpdate += "?page="+numberPage[0];
+					 }
+					 $("#tableMarks").load(urlUpdate);
+				});
+			/*]]>*/
 		</script>
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tableMarks"
@@ -56,7 +63,12 @@
  											/*<![CDATA[*/
  													$( "#resendButton[[${mark.id}]]" ).click(function() {
  														$.get( "/mark/[[${mark.id}]]/noresend", function( data ) {
- 															$("#tableMarks").load('/mark/list/update');
+ 															var numberPage = [[${param.page}]];
+ 															var urlUpdate = '/mark/list/update';
+ 															if ( numberPage != null ){
+ 																urlUpdate += "?page="+numberPage[0];
+ 															}
+ 															$("#tableMarks").load(urlUpdate);
  														});
  													});
  											/*]]>*/
@@ -69,7 +81,12 @@
  											/*<![CDATA[*/
  													$( "#noresendButton[[${mark.id}]]" ).click(function() {
  														$.get( "/mark/[[${mark.id}]]/resend", function( data ) {
- 															$("#tableMarks").load('/mark/list/update');
+ 															var numberPage = [[${param.page}]];
+ 															var urlUpdate = '/mark/list/update';
+ 															if ( numberPage != null ){
+ 																urlUpdate += "?page="+numberPage[0];
+ 															}
+ 															$("#tableMarks").load(urlUpdate);
  														});
  													});
  											/*]]>*/
@@ -83,6 +100,7 @@
 				</tbody>
 			</table>
 		</div>
+		<footer th:replace="fragments/pagination"/>
 	</div>
 	<footer th:replace="fragments/footer" />
 
