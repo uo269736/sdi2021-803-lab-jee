@@ -12,7 +12,7 @@ import com.uniovi.repositories.UsersRepository;
 public class UsersService {
 	@Autowired
 	private UsersRepository usersRepository;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -31,20 +31,27 @@ public class UsersService {
 	}
 
 	public void addUser(User user) {
-		//La contraseña va encriptada
+		// La contraseña va encriptada
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		usersRepository.save(user);
 	}
-	
+
 	public void editUser(User user) {
 		usersRepository.save(user);
 	}
-	
+
 	public User getUserByDni(String dni) {
 		return usersRepository.findByDni(dni);
 	}
 
 	public void deleteUser(Long id) {
 		usersRepository.deleteById(id);
+	}
+
+	public List<User> searchUserByNameAndSurname(String searchText) {
+		List<User> users = new ArrayList<User>();
+		searchText = "%"+searchText+"%";
+		users = usersRepository.searchByNameAndSurname(searchText);
+		return users;
 	}
 }
