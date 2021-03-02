@@ -17,10 +17,17 @@
 		<p>Los usuarios que actualmente figuran en el sistema son los
 			siguientes:</p>
 		<button type="button" id="updateButton" class="btn btn-default">Actualizar</button>
-		<script>
-			$("#updateButton").click(function() {
-				$("#tableUsers").load('/user/list/update');
+		<script th:inline="javascript">
+			/*<![CDATA[*/
+				$("#updateButton").click(function() {
+					 var numberPage = [[${param.page}]];
+					 var urlUpdate = '/user/list/update';
+					 if (numberPage != null ){
+					 urlUpdate += "?page="+numberPage[0];
+					 }
+					 $("#tableUsers").load(urlUpdate);
 			});
+				/*]]>*/
 		</script>
 		<div class="table-responsive">
 			<table class="table table-hover" th:fragment="tableUsers"
@@ -49,6 +56,7 @@
 				</tbody>
 			</table>
 		</div>
+		<footer th:replace="fragments/pagination"/>
 	</div>
 	<footer th:replace="fragments/footer" />
 </body>
