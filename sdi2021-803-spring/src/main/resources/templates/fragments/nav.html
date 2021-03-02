@@ -40,7 +40,7 @@
 						Gestión de Profesores <span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a href="/professor/add"
+						<li><a sec:authorize="hasRole('ROLE_ADMIN')" href="/professor/add"
 							th:text="#{gestion.profesor.agregar}">Agregar Profesor</a></li>
 						<li><a href="/professor/list"
 							th:text="#{gestion.profesor.ver}">Ver Profesores</a></li>
