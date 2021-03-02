@@ -35,7 +35,9 @@
 			/*]]>*/
 		</script>
 		<div class="table-responsive">
-			<table class="table table-hover" th:fragment="tableMarks"
+		<table th:replace="fragments/tableMarks" th:fragment="tableMarks"
+	id="tableMarks"/>
+			<!--  <table class="table table-hover" th:fragment="tableMarks"
 				id="tableMarks">
 				<thead>
 					<tr>
@@ -98,7 +100,7 @@
 							th:href="${'/mark/delete/' + mark.id}">eliminar</a></td>
 					</tr>
 				</tbody>
-			</table>
+			</table>-->
 		</div>
 		<footer th:replace="fragments/pagination"/>
 	</div>
