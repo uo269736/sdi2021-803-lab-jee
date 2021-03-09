@@ -205,12 +205,13 @@ public class NotaneitorTests {
 	// el rol deestudiante.
 	@Test
 	public void PR12() {
-		// Vamos al formulario de logueo.
-		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "99999990A", "123456");
-		// COmprobamos que entramos en la pagina privada de Alumno
-		PO_View.checkElement(driver, "text", "Notas del usuario");
+//		// Vamos al formulario de logueo.
+//		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+//		// Rellenamos el formulario
+//		PO_LoginView.fillForm(driver, "99999990A", "123456");
+//		// COmprobamos que entramos en la pagina privada de Alumno
+//		PO_View.checkElement(driver, "text", "Notas del usuario");
+		PO_PrivateView.loginAndCheck(driver, "99999990A", "123456", "Notas del usuario");
 		// Contamos el número de filas de notas
 		List<WebElement> elementos = SeleniumUtils.EsperaCargaPagina(driver, "free", "//tbody/tr",
 				PO_View.getTimeout());
@@ -224,12 +225,13 @@ public class NotaneitorTests {
 	// P13. Ver la lista de Notas.
 	@Test
 	public void PR13() {
-		// Vamos al formulario de logueo.
-		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "99999990A", "123456");
-		// COmprobamos que entramos en la pagina privada de Alumno
-		PO_View.checkElement(driver, "text", "Notas del usuario");
+//		// Vamos al formulario de logueo.
+//		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+//		// Rellenamos el formulario
+//		PO_LoginView.fillForm(driver, "99999990A", "123456");
+//		// COmprobamos que entramos en la pagina privada de Alumno
+//		PO_View.checkElement(driver, "text", "Notas del usuario");
+		PO_PrivateView.loginAndCheck(driver, "99999990A", "123456", "Notas del usuario");
 		SeleniumUtils.esperarSegundos(driver, 1);
 		// Contamos las notas
 		By enlace = By.xpath("//td[contains(text(), 'Nota A2')]/following-sibling::*[2]");
@@ -246,12 +248,13 @@ public class NotaneitorTests {
 	// P14. Esta prueba podría encapsularse mejor ...
 	@Test
 	public void PR14() {
-		// Vamos al formulario de logueo.
-		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "99999993D", "123456");
-		// COmprobamos que entramos en la pagina privada del Profesor
-		PO_View.checkElement(driver, "text", "99999993D");
+//		// Vamos al formulario de logueo.
+//		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+//		// Rellenamos el formulario
+//		PO_LoginView.fillForm(driver, "99999993D", "123456");
+//		// COmprobamos que entramos en la pagina privada del Profesor
+//		PO_View.checkElement(driver, "text", "99999993D");
+		PO_PrivateView.loginAndCheck(driver, "99999993D", "123456", "99999993D");
 		// Pinchamos en la opción de menu de Notas: //li[contains(@id, 'marks-menu')]/a
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id,'marks-menu')]/a");
 		elementos.get(0).click();
@@ -277,12 +280,13 @@ public class NotaneitorTests {
 	// PRN. Ver la lista de Notas.
 	@Test
 	public void PR15() {
-		// Vamos al formulario de logueo.
-		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
-		// Rellenamos el formulario
-		PO_LoginView.fillForm(driver, "99999993D", "123456");
-		// COmprobamos que entramos en la pagina privada del Profesor
-		PO_View.checkElement(driver, "text", "99999993D");
+//		// Vamos al formulario de logueo.
+//		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+//		// Rellenamos el formulario
+//		PO_LoginView.fillForm(driver, "99999993D", "123456");
+//		// COmprobamos que entramos en la pagina privada del Profesor
+//		PO_View.checkElement(driver, "text", "99999993D");
+		PO_PrivateView.loginAndCheck(driver, "99999993D", "123456", "99999993D");
 		// Pinchamos en la opción de menu de Notas: //li[contains(@id, 'marks-menu')]/a
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'marks-menu')]/a");
 		elementos.get(0).click();
